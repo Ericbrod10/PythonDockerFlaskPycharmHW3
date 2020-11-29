@@ -28,7 +28,7 @@ def index():
 @app.route('/view/<int:city_id>', methods=['GET'])
 def record_view(city_id):
     cursor = mysql.get_db().cursor()
-    cursor.execute('SELECT * FROM tblCitiesImport WHERE id=%s', city_id)
+    cursor.execute('SELECT * FROM tblCitiesImport WHERE id=%s' % city_id)
     result = cursor.fetchall()
     return render_template('view.html', title='View Form', city=result[0])
 
@@ -36,7 +36,7 @@ def record_view(city_id):
 @app.route('/edit/<int:city_id>', methods=['GET'])
 def form_edit_get(city_id):
     cursor = mysql.get_db().cursor()
-    cursor.execute('SELECT * FROM tblCitiesImport WHERE id=%s', city_id)
+    cursor.execute('SELECT * FROM tblCitiesImport WHERE id=%s' % city_id)
     result = cursor.fetchall()
     return render_template('edit.html', title='Edit Form', city=result[0])
 
